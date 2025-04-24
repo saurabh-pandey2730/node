@@ -1,7 +1,8 @@
 
 import express, { urlencoded } from 'express'
-import { fetchAllUsers ,fetchUserByID ,createUser } from './controller/user.controller.js'
+
 import morgan from 'morgan'
+import router from './router/user.router.js'
  let app =   express()
 app.set('view engine', 'ejs')  
  app.use(express.json())  
@@ -9,24 +10,12 @@ app.set('view engine', 'ejs')
 app.use(morgan('dev'))
 
  let port = 3001 
-let user = {
-  name: 'John',
-  age: 30,
-}
-
- app.get('/',(req,res)=>{
-
-  res.render('index',{user})
- 
- })
 
 
-  app.get('/user',fetchAllUsers)
-  app.get('/user/:id',fetchUserByID)
+ app.use('/',router)
 
 
-  app.post('/create', createUser)
-  
+
 
  app.listen(port,()=>{
     console.log(`server is running on port }`)

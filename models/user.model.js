@@ -15,4 +15,17 @@ function addUser(newUser) {
         userData.push(newUser);
 }
 
-export {getAllUsers,getUserByID,addUser}
+ function UpdateUser(id , data){
+        for(let user of userData){
+              if(user.id == id){
+                Object.assign(user,data)
+                return user
+              }  
+        }
+ } 
+ function deleteUser(id){
+        userData.splice(userData.findIndex(user=>user.id==id),1) 
+        
+ }
+
+export {getAllUsers,getUserByID,addUser,UpdateUser,deleteUser}
