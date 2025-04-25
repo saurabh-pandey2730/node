@@ -1,14 +1,18 @@
 
 import express, { urlencoded } from 'express'
-
 import morgan from 'morgan'
 import router from './router/user.router.js'
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
  let app =   express()
 app.set('view engine', 'ejs')  
  app.use(express.json())  
  app.use(express.urlencoded())
 app.use(morgan('dev'))
-
+app.use(express.static(path.join(__dirname, 'public')))
  let port = 3001 
 
 

@@ -8,7 +8,8 @@ const fetchAllUsers=(req,res)=>{
 const fetchUserByID=(req,res)=>{
         //  console.log("hello")
           const user = getUserByID(req.params.id)  
-         res.send(user)
+          res.render('profile',{user})
+       //   res.send(user)
 }
  const createUser=(req,res)=>{
            console.log(req.body)   
