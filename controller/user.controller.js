@@ -3,7 +3,8 @@ import { getAllUsers ,getUserByID ,addUser, UpdateUser ,deleteUser } from "../mo
 
 const fetchAllUsers=(req,res)=>{
        const users =   getAllUsers()
-       res.send(users);
+         res.render('users', {users})
+       // res.send(users);
 }
 const fetchUserByID=(req,res)=>{
         //  console.log("hello")
@@ -12,9 +13,11 @@ const fetchUserByID=(req,res)=>{
        //   res.send(user)
 }
  const createUser=(req,res)=>{
-           console.log(req.body)   
+           console.log("body",req.body)   
         addUser(req.body)
-        res.send("user created successfully")
+       //  res.send("user created successfully")
+       res.redirect('/user')
+
  }
   const updatingUser=(req,res)=>{
            const updatedUser =   UpdateUser(req.params.id , req.body) 
