@@ -17,18 +17,20 @@ const fetchUserByID=(req,res)=>{
         addUser(req.body)
        //  res.send("user created successfully")
        res.redirect('/user')
-
- }
-  const updatingUser=(req,res)=>{
-           const updatedUser =   UpdateUser(req.params.id , req.body) 
-           res.send('user updated successfully', updatedUser)
+       
+      }
+      const updatingUser=(req,res)=>{
+        const updatedUser =   UpdateUser(req.params.id , req.body) 
+        //  res.send('user updated successfully', updatedUser) 
+        res.redirect('/user')
   }
   const fetchUsersData = (req,res)=>{
        res.render('index')  
   } 
    const deleteUserByID=(req,res)=>{
        deleteUser(req.params.id) 
-       res.send('user deleted succesfully')
+      //  res.send('user deleted succesfully')
+      res.redirect('/user')
    }
 
 export{fetchAllUsers ,fetchUserByID ,createUser,updatingUser,fetchUsersData,deleteUserByID}

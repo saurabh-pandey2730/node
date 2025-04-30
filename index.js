@@ -5,14 +5,20 @@ import router from './router/user.router.js'
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import methodOverride from 'method-override';
+
+
+// Add after body-parser
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
- let app =   express()
+let app =   express()
 app.set('view engine', 'ejs')  
- app.use(express.json())  
- app.use(express.urlencoded())
+app.use(express.json())  
+app.use(express.urlencoded())
 app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(methodOverride('_method'));
  let port = 3001 
 
 
