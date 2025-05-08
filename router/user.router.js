@@ -1,8 +1,8 @@
 import express from 'express'
-import { fetchAllUsers ,fetchUserByID ,createUser, updatingUser ,fetchUsersData,deleteUserByID} from '../controller/user.controller.js'
+import { fetchAllUsers ,fetchUserByID ,createUser, updatingUser ,deleteUserByID} from '../controller/user.controller.js'
 const router = express.Router()
 
-router.get('/',fetchUsersData)
+
 router.get('/user',fetchAllUsers)
 router.get('/user/:id',fetchUserByID)
 router.post('/create', createUser)

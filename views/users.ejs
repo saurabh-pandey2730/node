@@ -20,13 +20,18 @@
     <% for(let i = 0; i < users.length; i++) { %>
       <div class="single-user">
         <h2>   <%= users[i].Name %>   </h2>
-         
+
          <p>email:-  <%= users[i].email %>   </p>
           <div>
-            <form method="POST" action="/delete/<%= users[i].id %>?_method=DELETE" style="display:inline;">
-            <button type="submit">❌</button>
-            </form> 
-             <button><a href="/user/<%= users[i].id %>">update</a></button>
+            <form method="post"  action="/delete/<%= users[i].id %>?_method=DELETE" >
+
+              <button type="submit">❌</button>
+                  <a href="/user/<%= users[i].id %>">update</a>
+            </form>
+                
+              
+             
+
           </div>
       </div>
     <% } %>
