@@ -1,10 +1,11 @@
 import { getAllUsers ,getUserByID ,addUser, UpdateUser ,deleteUser } from "../models/user.model.js";
 
 
-const fetchAllUsers=(req,res)=>{
-       const users =   getAllUsers()
-         res.render('users', {users})
-       // res.send(users);
+const fetchAllUsers= async(req,res)=>{
+       const users =  await getAllUsers()
+         res.render('users', {users}) 
+        // console.log(users)
+      //  res.send(users);
 }
 const fetchUserByID=(req,res)=>{
         //  console.log("hello")
@@ -12,12 +13,12 @@ const fetchUserByID=(req,res)=>{
           res.render('profile',{user})
        //   res.send(user)
 }
- const createUser=(req,res)=>{
-           console.log("body",req.body)   
-        addUser(req.body)
-        // res.send("user created successfully") 
+ const createUser=async(req,res)=>{
+           console.log(req.body)   
+        await addUser(req.body)
+        res.send("user created successfully") 
         
-        res.redirect('/user')
+        // res.redirect('/user')
         
         
       }

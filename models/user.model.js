@@ -1,8 +1,10 @@
 import { userData } from "../data.js";
+import UserModel from "./user.schema.js";
 
-
-function getAllUsers(){
-    return userData;
+ async function getAllUsers(){
+//     return userData;  
+         const users = await UserModel.find()  
+         return users
 }
 
 function getUserByID(id){
@@ -11,8 +13,11 @@ function getUserByID(id){
      
 }
 
-function addUser(newUser) {
-        userData.push(newUser);
+ async function addUser(newUser) {
+     
+             let user = new UserModel(newUser)  
+              await user.save()  
+              
 }
 
  function UpdateUser(id , data){

@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import methodOverride from 'method-override';
+import { connectDB } from './database.js';
 
 
 // Add after body-parser
@@ -24,7 +25,7 @@ app.use(methodOverride('_method'));
 
  app.use('/',router)
 
-
+connectDB()
 
 
  app.listen(port,()=>{
