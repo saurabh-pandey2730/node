@@ -9,8 +9,8 @@
 <body>
            
   <form action="/create" method="post">
-    <label for="Name">name:-</label>
-    <input type="text" name="Name" required><br><br>
+    <label for="name">name:-</label>
+    <input type="text" name="name" required><br><br>
     <label for="email">Email:-</label>
     <input type="email" name="email" required> <br><br>
    <button type="submit">submit</button>
@@ -19,7 +19,7 @@
   <div class="user">
     <% for(let i = 0; i < users.length; i++) { %>
       <div class="single-user">
-        <h2>   <%= users[i].Name %>   </h2>
+        <h2>   <%= users[i].name %>   </h2>
 
          <p>email:-  <%= users[i].email %>   </p>
           <div>

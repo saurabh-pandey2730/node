@@ -7,28 +7,32 @@ const fetchAllUsers= async(req,res)=>{
         // console.log(users)
       //  res.send(users);
 }
-const fetchUserByID=(req,res)=>{
+const fetchUserByID= async(req,res)=>{
         //  console.log("hello")
-          const user = getUserByID(req.params.id)  
-          res.render('profile',{user})
-       //   res.send(user)
+          const user = await getUserByID(req.params.id)  
+          if(user){
+            // res.send(user)
+            res.render('profile',{user})
+          }else{
+             res.send('user does not exist')
+          }
 }
  const createUser=async(req,res)=>{
            console.log(req.body)   
         await addUser(req.body)
-        res.send("user created successfully") 
+        // res.send("user created successfully") 
         
-        // res.redirect('/user')
+        res.redirect('/user')
         
         
       }
-      const updatingUser=(req,res)=>{
-        const updatedUser =   UpdateUser(req.params.id , req.body) 
+      const updatingUser= async (req,res)=>{
+        const updatedUser = await UpdateUser(req.params.id , req.body) 
         //  res.send('user updated successfully', updatedUser) 
         res.redirect('/user')
   }
-   const deleteUserByID=(req,res)=>{
-       deleteUser(req.params.id) 
+   const deleteUserByID= async(req,res)=>{
+             const user =  await deleteUser(req.params.id) 
       //  res.send('user deleted succesfully') 
       res.redirect('/user')
    }

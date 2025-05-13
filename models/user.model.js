@@ -7,8 +7,8 @@ import UserModel from "./user.schema.js";
          return users
 }
 
-function getUserByID(id){
-          return userData.find(user => user.id == id);  
+ async function getUserByID(id){
+          return  await UserModel.findById(id);
         // return userData[id-1]
      
 }
@@ -20,16 +20,17 @@ function getUserByID(id){
               
 }
 
- function UpdateUser(id , data){
-        for(let user of userData){
-              if(user.id == id){
-                Object.assign(user,data)
-                return user
-              }  
-        }
+  async function UpdateUser(id , data){
+    const updated = await UserModel.findByIdAndUpdate(id, data) 
+       return updated 
  } 
- function deleteUser(id){
-        userData.splice(userData.findIndex(user=>user.id==id),1) 
+ async function deleteUser(id){
+        // userData.splice(userData.findIndex(user=>user.id==id),1) 
+         console.log(id)
+      await UserModel.findByIdAndDelete(id)
+        
+        return 
+
         
  }
 
